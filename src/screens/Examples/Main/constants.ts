@@ -35,8 +35,8 @@ export const examples: Example[] = [
     icons: '👆📱',
   },
   {
-    title: 'Interactive keyboard 🍏',
-    info: ScreenNames.INTERACTIVE_KEYBOARD_IOS,
+    title: 'Interactive keyboard NO CRASH',
+    info: ScreenNames.INTERACTIVE_KEYBOARD_NO_CRASH,
     icons: '👆📱',
   },
 ];

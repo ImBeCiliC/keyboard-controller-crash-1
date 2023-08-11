@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-import {  Pressable, Text, TextInput, View } from 'react-native';
+import { Button, Pressable, Text, TextInput, View } from 'react-native';
 import {
   KeyboardGestureArea,
   useKeyboardHandler,
@@ -22,12 +22,6 @@ const useKeyboardAnimation = () => {
   const progress = useSharedValue(0);
   const height = useSharedValue(0);
   useKeyboardHandler({
-    onStart: (e) => {
-      'worklet';
-
-      progress.value = e.progress;
-      height.value = e.height;
-    },
     onMove: (e) => {
       'worklet';
 
@@ -41,6 +35,12 @@ const useKeyboardAnimation = () => {
       height.value = e.height;
     },
     onEnd: (e) => {
+      'worklet';
+
+      progress.value = e.progress;
+      height.value = e.height;
+    },
+    onStart: (e) => {
       'worklet';
 
       progress.value = e.progress;
@@ -96,12 +96,7 @@ function InteractiveKeyboard({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      <KeyboardGestureArea
-        style={styles.content}
-        interpolator={interpolator}
-        showOnSwipeUp
-      >
-        <Pressable onPress={() => navigation.navigate(ScreenNames.TEST)} style={{ position: 'absolute', width: '100%', justifyContent: 'center', height: 25, alignItems: 'center', backgroundColor: '#abc000', zIndex: 100}}><Text>Navigation</Text></Pressable>
+      <Pressable onPress={() => navigation.navigate(ScreenNames.TEST)} style={{ position: 'absolute', width: '100%', justifyContent: 'center', height: 25, alignItems: 'center', backgroundColor: '#abc000', zIndex: 100, top: 0}}><Text>Navigation</Text></Pressable>
         <Reanimated.ScrollView
           showsVerticalScrollIndicator={false}
           style={scrollViewStyle}
@@ -113,7 +108,6 @@ function InteractiveKeyboard({ navigation }: Props) {
             ))}
           </View>
         </Reanimated.ScrollView>
-      </KeyboardGestureArea>
       <AnimatedTextInput style={textInputStyle} />
     </View>
   );
